@@ -1,41 +1,137 @@
-
-<body style="background-color: blue;">
-    
-
-<h1> 
-
-
-ciao benvenuti nella pagina che ingrandisce il bottone
-
-</h1>
-
-<button onclick="ingrandisci()"  style="height:50px; width:50px;" id="grande">
-
-    clicca qui per ingrandire
-</button>
-<script>
-    var ingrandisci= function(){
-        var bottone = document.getElementById("grande")
-        var piccola;
-        if(bottone.style.height === "50px"){
-            piccola="true"
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina di Profumi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:  antiquewhite;
 
         }
-        else{piccola="false"}
 
-        if(piccola==="true"){    
-            bottone.style = "height:500px; width:500px;"
-            bottone.innerHTML ="clicca qui per rimpicciolire"
-            piccola= "false"
+        .container {
+            height: max-content;
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color:  antiquewhite;
+
+          
         }
-        else if(piccola === "false"){
-            bottone.style = "height:50px; width:50px;"
-            bottone.innerHTML ="clicca qui per ingrandire"
-            piccola= "true" 
 
+        h1 {
+            text-align: center;
         }
-    }
+        .filtro{
+            border-radius: 12px;
+    width: 30%;
+    height: 38px;
+}
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
 
-    
-</script>
+        .perfume-list {
+            justify-content: space-between;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .perfume-item {
+            width: calc(30% - 20px);
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .perfume-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .perfume-item h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .perfume-item p {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profumi</h1>
+        <div class="filters">
+            <select class="filtro" id="brand-filter">
+                <option value="">Tutti i marchi</option>
+                <option value="Brand1">Brand1</option>
+                <option value="Brand2">Brand2</option>
+                <!-- Aggiungi altri brand qui -->
+            </select>
+            <input type="text" id="search" placeholder="Cerca profumi...">
+        </div>
+        <div id="perfume-list" class="perfume-list">
+            <!-- I profumi verranno inseriti qui -->
+        </div>
+    </div>
+
+    <script>
+        // Dati dei profumi (esempio)
+        const perfumes = [
+            { id: 1, name: "Profumo A", brand: "Brand1", image: "https://via.placeholder.com/150" },
+            { id: 2, name: "Profumo B", brand: "Brand2", image: "https://via.placeholder.com/150" },
+            { id: 3, name: "Profumo C", brand: "Brand1", image: "https://via.placeholder.com/150" },
+            { id: 4, name: "Profumo D", brand: "Brand2", image: "https://via.placeholder.com/150" },
+            { id: 5, name: "Profumo E", brand: "Brand1", image: "https://via.placeholder.com/150" },
+            { id: 6, name: "Profumo F", brand: "Brand2", image: "https://via.placeholder.com/150" }
+        ];
+
+        // Funzione per visualizzare i profumi
+        function displayPerfumes(perfumes) {
+            const perfumeList = document.getElementById('perfume-list');
+            perfumeList.innerHTML = '';
+            perfumes.forEach(perfume => {
+                const perfumeItem = document.createElement('div');
+                perfumeItem.className = 'perfume-item';
+                perfumeItem.innerHTML = `
+                    <img src="${perfume.image}" alt="${perfume.name}">
+                    <h2>${perfume.name}</h2>
+                    <p>${perfume.brand}</p>
+                `;
+                perfumeList.appendChild(perfumeItem);
+            });
+        }
+
+        // Funzione per filtrare i profumi
+        function filterPerfumes() {
+            const brandFilter = document.getElementById('brand-filter').value.toLowerCase();
+            const searchQuery = document.getElementById('search').value.toLowerCase();
+
+            const filteredPerfumes = perfumes.filter(perfume => {
+                const matchesBrand = brandFilter ? perfume.brand.toLowerCase() === brandFilter : true;
+                const matchesSearch = perfume.name.toLowerCase().includes(searchQuery);
+                return matchesBrand && matchesSearch;
+            });
+
+            displayPerfumes(filteredPerfumes);
+        }
+
+        // Event listeners per i filtri
+        document.getElementById('brand-filter').addEventListener('change', filterPerfumes);
+        document.getElementById('search').addEventListener('input', filterPerfumes);
+
+        // Visualizza tutti i profumi all'inizio
+        displayPerfumes(perfumes);
+    </script>
 </body>
+</html>
