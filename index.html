@@ -63,28 +63,34 @@
 
         .perfume-item {
             border-radius: 15px;
-            width: 75%;
+            width: 30%;
             padding: 10px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
-        .perfume-item img {
-            width: 100%;
-            height: auto;
+        .mobile-perfume-item {
+            border-radius: 15px;
+            width: 75%;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
         }
 
-        .perfume-item h2 {
-            font-size: 22px;
+        .nome {
+            font-size: 30px;
             margin: 20px 0;
-            font-family: Futura, Trebuchet MS, Arial, sans-serif;
+            font-family: 'Playfair Display', serif;
         }
 
-        .perfume-item p {
-            font-size: 15px;
+        .marca {
+            font-size: 20px;
             color: #666;
-            margin-bottom: 10px;
+            margin: 20px 0px;
+            /* align-items: center; */
+            text-align: end;
         }
     </style>
 </head>
@@ -107,9 +113,9 @@
     </div>
 
     <script>
-        // Dati dei profumi (esempio)
+
         const perfumes = [
-            { id: 1, name: "Profumo A", brand: "Brand1", image: "https://via.placeholder.com/150" },
+            { id: 1, name: "Profumo A", brand: "Brand1", image: "images/a1.bmp" },
             { id: 2, name: "Profumo B", brand: "Brand2", image: "https://via.placeholder.com/150" },
             { id: 3, name: "Profumo C", brand: "Brand1", image: "https://via.placeholder.com/150" },
             { id: 4, name: "Profumo D", brand: "Brand2", image: "https://via.placeholder.com/150" },
@@ -123,11 +129,15 @@
             perfumeList.innerHTML = '';
             perfumes.forEach(perfume => {
                 const perfumeItem = document.createElement('div');
-                perfumeItem.className = 'perfume-item';
+                if (window.innerWidth < 720) {
+                    perfumeItem.className = 'mobile-perfume-item';
+                } else if (window.innerWidth > 720) {
+                    perfumeItem.className = 'perfume-item';
+                }
                 perfumeItem.innerHTML = `
-                    <img src="${perfume.image}" alt="${perfume.name}">
-                    <h2>${perfume.name}</h2>
-                    <p>${perfume.brand}</p>
+                    <img style="width: 100%;height: auto;" src="${perfume.image}" alt="${perfume.name}">
+                    <p class="nome">${perfume.name}</p>
+                    <p class="marca">${perfume.brand}</p>
                 `;
                 perfumeList.appendChild(perfumeItem);
             });
