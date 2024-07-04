@@ -37,7 +37,7 @@
             text-align: center;
             font-family: Futura, Trebuchet MS, Arial, sans-serif;
             margin-bottom: 32px;
-            font-size: 50px;
+            font-size: 40px;
         }
 
         .filtro {
@@ -133,14 +133,38 @@
             font-size: 18px;
             margin-bottom: 50px;
         }
+
+        .scroll-to-top {
+            height: 60px;
+            width: 60px;
+            opacity: 60%;
+            background-color: grey;
+            color: white;
+            border: none;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+
+        .scroll {
+            position: fixed;
+            display: none;
+            width: 100%;
+            justify-content: center;
+        }
     </style>
+
+
 </head>
 
 <body>
+    <div class="scroll" id="bar">
+        <button class="scroll-to-top" onclick="scrollToTop()">&#8679</button>
+    </div>
     <div class="container">
         <h1>Outlet Profumi Grandi Marche</h1>
         <p class="desc">Benvenuto nel nostro outlet, dove l'eleganza incontra il risparmio.<br> Qui potrai scoprire una
-            selezione esclusiva dei migliori profumi dei pi&#249 rinomati marchi di moda, offerti a prezzi incredibilmente
+            selezione esclusiva dei migliori profumi dei pi&#249 rinomati marchi di moda, offerti a prezzi
+            incredibilmente
             convenienti.<br> Non perdere l'occasione di aggiungere un tocco di lusso alla tua collezione, senza
             compromessi sul prezzo.</p>
         <p style="margin-bottom: 5px;">Ordina per marca</p>
@@ -159,6 +183,23 @@
     </div>
 
     <script>
+       
+
+        window.addEventListener('scroll', function() {
+            var scrollPosition = window.pageYOffset;
+
+            // Mostra il pulsante se lo scroll è oltre i 300px dalla cima
+            if (scrollPosition > 1500) {
+                console.log("ti sei mosso")
+                document.getElementById("bar").style.display = 'flex';
+            } else {
+                document.getElementById("bar").style.display = 'none';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         const perfumes = [
             { id: 1, name: "Irresistible", brand: "Givenchy", image: "images/a1.bmp" },
