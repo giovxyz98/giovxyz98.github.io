@@ -79,18 +79,59 @@
 
         }
 
+        .prezzo {
+            margin: 0px;
+            display: inline-block;
+            position: relative;
+            font-size: 27px;
+            left: 54%;
+            font-weight: bold;
+            color: gray;
+        }
+
+        .prezzo::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            bottom: 17px;
+            width: 151%;
+            height: 3px;
+            background: linear-gradient(to right, gray, gray);
+            rotate: 157deg;
+        }
+
+        .costo {
+            color: maroon;
+            font-size: 54px;
+            margin-bottom: 0px;
+            text-align: justify;
+            margin-bottom: 10px;
+            font-weight: bolder;
+            margin-top: 0px;
+        }
+
         .nome {
+            text-align: justify;
+            font-weight: bold;
             font-size: 30px;
             margin: 20px 0;
             font-family: 'Playfair Display', serif;
         }
 
         .marca {
+            font-weight: bolder;
             font-size: 20px;
             color: #666;
             margin: 20px 0px;
             /* align-items: center; */
             text-align: end;
+        }
+
+        .desc {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            margin-bottom: 50px;
         }
     </style>
 </head>
@@ -98,10 +139,15 @@
 <body>
     <div class="container">
         <h1>Outlet Profumi Grandi Marche</h1>
+        <p class="desc">Benvenuto nel nostro outlet, dove l'eleganza incontra il risparmio.<br> Qui potrai scoprire una
+            selezione esclusiva dei migliori profumi dei pi&#249 rinomati marchi di moda, offerti a prezzi incredibilmente
+            convenienti.<br> Non perdere l'occasione di aggiungere un tocco di lusso alla tua collezione, senza
+            compromessi sul prezzo.</p>
+        <p style="margin-bottom: 5px;">Ordina per marca</p>
         <div class="filters">
             <select class="filtro" id="brand-filter">
                 <option value="">Tutti i marchi</option>
-                <option value="Brand1">Brand1</option>
+                <option value="givenchy">Givenchy</option>
                 <option value="Brand2">Brand2</option>
                 <!-- Aggiungi altri brand qui -->
             </select>
@@ -115,7 +161,7 @@
     <script>
 
         const perfumes = [
-            { id: 1, name: "Profumo A", brand: "Brand1", image: "images/a1.bmp" },
+            { id: 1, name: "Irresistible", brand: "Givenchy", image: "images/a1.bmp" },
             { id: 2, name: "Profumo B", brand: "Brand2", image: "https://via.placeholder.com/150" },
             { id: 3, name: "Profumo C", brand: "Brand1", image: "https://via.placeholder.com/150" },
             { id: 4, name: "Profumo D", brand: "Brand2", image: "https://via.placeholder.com/150" },
@@ -138,6 +184,9 @@
                     <img style="width: 100%;height: auto;" src="${perfume.image}" alt="${perfume.name}">
                     <p class="nome">${perfume.name}</p>
                     <p class="marca">${perfume.brand}</p>
+                    <div style="position:relative;left:10%;">
+                    <p class="prezzo">&#8364 120</p>
+                    <p class="costo">&#8364 50</p></div>
                 `;
                 perfumeList.appendChild(perfumeItem);
             });
