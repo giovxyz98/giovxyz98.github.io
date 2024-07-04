@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +10,22 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color:  bisque;
+            background-color: bisque;
 
         }
 
         .container {
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
             height: max-content;
             width: 80%;
             margin: 20px auto;
             padding: 20px;
-            background-color:  antiquewhite;
+            background-color: antiquewhite;
             border: 10px solid white;
-            border-radius: 50px;          
+            border-radius: 50px;
         }
-        .input_search{
+
+        .input_search {
             border: none;
             width: 30%;
             height: 38px;
@@ -33,11 +36,14 @@
         h1 {
             text-align: center;
         }
-        .filtro{
+
+        .filtro {
             border-radius: 12px;
-    width: 30%;
-    height: 38px;
-}
+            width: 30%;
+            height: 38px;
+            border: none;
+        }
+
         .filters {
             display: flex;
             justify-content: space-between;
@@ -45,36 +51,40 @@
         }
 
         .perfume-list {
-            justify-content: space-between;
+            margin-bottom: 50px;
+            justify-content: space-evenly;
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
 
         .perfume-item {
-            width: calc(30% - 20px);
+            border-radius: 15px;
+            width: calc(28% - 20px);
             padding: 10px;
             background-color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         .perfume-item img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
         }
 
         .perfume-item h2 {
-            font-size: 1.2em;
-            margin: 10px 0;
+            font-size: 22px;
+            margin: 20px 0;
         }
 
         .perfume-item p {
-            font-size: 0.9em;
+            font-size: 15px;
             color: #666;
+            margin-bottom: 10px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Profumi</h1>
@@ -141,4 +151,5 @@
         displayPerfumes(perfumes);
     </script>
 </body>
+
 </html>
