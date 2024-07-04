@@ -1,0 +1,41 @@
+
+<body style="background-color: blue;">
+    
+
+<h1> 
+
+
+ciao benvenuti nella pagina che ingrandisce il bottone
+
+</h1>
+
+<button onclick="ingrandisci()"  style="height:50px; width:50px;" id="grande">
+
+    clicca qui per ingrandire
+</button>
+<script>
+    var ingrandisci= function(){
+        var bottone = document.getElementById("grande")
+        var piccola;
+        if(bottone.style.height === "50px"){
+            piccola="true"
+
+        }
+        else{piccola="false"}
+
+        if(piccola==="true"){    
+            bottone.style = "height:500px; width:500px;"
+            bottone.innerHTML ="clicca qui per rimpicciolire"
+            piccola= "false"
+        }
+        else if(piccola === "false"){
+            bottone.style = "height:50px; width:50px;"
+            bottone.innerHTML ="clicca qui per ingrandire"
+            piccola= "true" 
+
+        }
+    }
+
+    
+</script>
+</body>
