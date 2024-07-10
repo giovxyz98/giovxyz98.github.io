@@ -84,7 +84,6 @@
             display: inline-block;
             position: relative;
             font-size: 27px;
-            left: 54%;
             font-weight: bold;
             color: gray;
         }
@@ -120,7 +119,7 @@
 
         .marca {
             font-weight: bolder;
-            font-size: 20px;
+            font-size: 23px;
             color: #666;
             margin: 20px 0px;
             /* align-items: center; */
@@ -151,6 +150,50 @@
             width: 100%;
             justify-content: center;
         }
+        .thumbnail {
+            cursor: pointer;
+            width: 100px; 
+            height: auto;
+        }
+        
+        /* Stile per il div a schermo intero */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        /* Stile per l'immagine a schermo intero */
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid white;
+        }
+        .esplora{
+            text-align: center;
+    font-family: emoji;
+    font-size: 22px;
+        }
+        .acquista{
+            align-content: center;
+            padding: 10px 5px;
+            text-shadow: -1px 1px powderblue;
+            text-align: center;
+            color: currentcolor;
+            font-family: emoji;
+            font-size: 27px;
+            border: solid 10px floralwhite;
+            border-radius: 15px;
+            display: block;
+        }
+        
     </style>
 
 
@@ -167,12 +210,25 @@
             incredibilmente
             convenienti.<br> Non perdere l'occasione di aggiungere un tocco di lusso alla tua collezione, senza
             compromessi sul prezzo.</p>
+            <a class="acquista" href="https://www.facebook.com/profile.php?id=61561527584560">Acquista ora</a>
+            <p class="esplora">Esplora la nostra gallery &#8681;</p>    
         <p style="margin-bottom: 5px;">Ordina per marca</p>
         <div class="filters">
             <select class="filtro" id="brand-filter">
                 <option value="">Tutti i marchi</option>
-                <option value="givenchy">Givenchy</option>
-                <option value="Brand2">Brand2</option>
+                <option value="Givenchy">Givenchy</option>
+                <option value="Moschino">Moschino</option>
+                <option value="Tom Ford">Tom Ford</option>
+                <option value="Burberry">Burberry</option>
+                <option value="Hermes">Herm&#232;s</option>
+                <option value="Paco Rabanne">Paco Rabanne</option>
+                <option value="Dior">Dior</option>
+                <option value="Chanel">Chanel</option>
+                <option value="Marc Jacobs">Marc Jacobs</option>
+                <option value="Yves Saint Laurent">Yves Saint Laurent</option>
+                <option value="Gucci">Gucci</option>
+                <!-- Aggiungi altri brand qui -->
+                <!-- Aggiungi altri brand qui -->
                 <!-- Aggiungi altri brand qui -->
             </select>
             <input class="input_search" type="text" id="search" placeholder="Cerca profumi...">
@@ -180,6 +236,7 @@
         <div id="perfume-list" class="perfume-list">
             <!-- I profumi verranno inseriti qui -->
         </div>
+        <a class="acquista" href="https://www.facebook.com/profile.php?id=61561527584560">Acquista ora</a>
     </div>
 
     <script>
@@ -201,37 +258,79 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        const perfumes = [
-            { id: 1, name: "Irresistible", brand: "Givenchy", image: "images/a1.bmp" },
-            { id: 2, name: "Profumo B", brand: "Brand2", image: "https://via.placeholder.com/150" },
-            { id: 3, name: "Profumo C", brand: "Brand1", image: "https://via.placeholder.com/150" },
-            { id: 4, name: "Profumo D", brand: "Brand2", image: "https://via.placeholder.com/150" },
-            { id: 5, name: "Profumo E", brand: "Brand1", image: "https://via.placeholder.com/150" },
-            { id: 6, name: "Profumo F", brand: "Brand2", image: "https://via.placeholder.com/150" }
-        ];
-
+        const perfumes = products = [
+        { id: "art1", name: "Irresistible", brand: "Givenchy", image: "images/art_0.jpg" },
+        { id: "art2", name: "Toy Boy", brand: "Moschino", image: "images/art_1.jpg" },
+        { id: "art3", name: "Toy 2", brand: "Moschino", image: "images/art_2.jpg" },
+        { id: "art4", name: "Oud Wood", brand: "Tom Ford", image: "images/art_3.jpg" },
+        { id: "art5", name: "Weekend", brand: "Burberry", image: "images/art_4.jpg" },
+        { id: "art6", name: "Terre d'Hermes", brand: "Hermes", image: "images/art_5.jpg" },
+        { id: "art7", name: "Invictus", brand: "Paco Rabanne", image: "images/art_6.jpg" },
+        { id: "art8", name: "Sauvage", brand: "Dior", image: "images/art_7.jpg" },
+        { id: "art9", name: "Gabrelle", brand: "Chanel", image: "images/art_8.jpg" },
+        { id: "art10", name: "Dylan Blue", brand: "Versace", image: "images/art_9.jpg" },
+        { id: "art11", name: "Chance", brand: "Chanel", image: "images/art_10.jpg" },
+        { id: "art12", name: "Decadence", brand: "Marc Jacobs", image: "images/art_11.jpg" },
+        { id: "art13", name: "Libre", brand: "Yves Saint Laurent", image: "images/art_12.jpg" },
+        { id: "art14", name: "Flora", brand: "Gucci", image: "images/art_13.jpg" },
+        { id: "art15", name: "Tobacco Vanille", brand: "Tom Ford", image: "images/art_14.jpg" }
+    ];
         // Funzione per visualizzare i profumi
-        function displayPerfumes(perfumes) {
-            const perfumeList = document.getElementById('perfume-list');
-            perfumeList.innerHTML = '';
-            perfumes.forEach(perfume => {
-                const perfumeItem = document.createElement('div');
-                if (window.innerWidth < 720) {
-                    perfumeItem.className = 'mobile-perfume-item';
-                } else if (window.innerWidth > 720) {
-                    perfumeItem.className = 'perfume-item';
-                }
-                perfumeItem.innerHTML = `
-                    <img style="width: 100%;height: auto;" src="${perfume.image}" alt="${perfume.name}">
-                    <p class="nome">${perfume.name}</p>
-                    <p class="marca">${perfume.brand}</p>
-                    <div style="position:relative;left:10%;">
-                    <p class="prezzo">&#8364 120</p>
-                    <p class="costo">&#8364 50</p></div>
-                `;
-                perfumeList.appendChild(perfumeItem);
-            });
+    
+// Funzione per visualizzare i profumi
+function displayPerfumes(perfumes) {
+    const perfumeList = document.getElementById('perfume-list');
+    perfumeList.innerHTML = '';
+    perfumes.forEach(perfume => {
+        const perfumeItem = document.createElement('div');
+        if (window.innerWidth < 720) {
+            perfumeItem.className = 'mobile-perfume-item';
+        } else if (window.innerWidth > 720) {
+            perfumeItem.className = 'perfume-item';
         }
+        perfumeItem.innerHTML = `
+            <img class="thumbnail" style="width: 100%; height: auto;" src="${perfume.image}" alt="${perfume.name}">
+            <p class="nome">${perfume.name}</p>
+            <p class="marca">${perfume.brand}</p>
+            <div >
+                <p class="prezzo">&#8364 120</p>
+                <p class="costo">&#8364 50</p>
+            </div>
+        `;
+        perfumeList.appendChild(perfumeItem);
+    });
+
+    // Aggiungi l'event listener per l'immagine a schermo intero
+    const images = document.querySelectorAll(".thumbnail");
+
+    images.forEach(image => {
+        image.addEventListener("click", function() {
+            openFullscreen(image);
+        });
+    });
+
+    function openFullscreen(image) {
+        // Crea un div per lo schermo intero
+        const fullscreenDiv = document.createElement("div");
+        fullscreenDiv.classList.add("fullscreen");
+
+        // Crea una nuova immagine da visualizzare a schermo intero
+        const fullscreenImg = document.createElement("img");
+        fullscreenImg.src = image.src;
+        fullscreenImg.classList.add("fullscreen-image");
+
+        // Aggiungi l'immagine al div
+        fullscreenDiv.appendChild(fullscreenImg);
+
+        // Aggiungi il div al body
+        document.body.appendChild(fullscreenDiv);
+
+        // Chiudi lo schermo intero al click
+        fullscreenDiv.addEventListener("click", function() {
+            document.body.removeChild(fullscreenDiv);
+        });
+    }
+}
 
         // Funzione per filtrare i profumi
         function filterPerfumes() {
