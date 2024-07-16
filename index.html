@@ -30,7 +30,7 @@
             margin-bottom: 50px;
             flex-wrap: wrap;
             align-content: space-around;
-        
+
         }
 
         button {
@@ -44,23 +44,30 @@
         }
 
         .title {
-            font-size: 32px;
+            font-size: 36px;
             text-align: center;
             line-height: 50px;
             font-weight: bold;
         }
-        .container{
-            border: 1px solid midnightblue;
-            border-radius: 15px;
-            background-image: url("home-preview.png");
-            background-size: contain;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    height: 97vh;
-    justify-content: space-between;
-    background-position-y: 92px;
 
+        .container {
+            border: 15px solid black;
+            border-radius: 50px;
+
+            display: flex;
+            flex-direction: column;
+            height: 93vh;
+            justify-content: space-between;
+            background-position-y: 92px;
+            background-color: floralwhite;
+        }
+        .img{
+            height: -webkit-fill-available;
+            width: 100%;
+            background-image: url(home-preview.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        
         }
     </style>
 </head>
@@ -70,19 +77,24 @@
         <p class="title">
             Benvenuto da Tophair
         </p>
-
+<div class="img"></div>
         <div>
             <p style="    text-align: center;    font-size: 30px;">Cosa vuoi fare:</p>
             <div class="containerButton">
-                <button>
+                <button onclick="acquista()">
                     Sfoglia il nostro catalogo
                 </button>
-                <button>
+                <button onclick="acquista()">
                     Prenota
                 </button>
             </div>
         </div>
     </div>
+    <script>
+        var acquista = function(){
+            alert("Acquista per avere la versione completa")
+        }
+    </script>
 </body>
 
 </html>
