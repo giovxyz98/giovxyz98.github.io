@@ -3,356 +3,86 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina di Profumi</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+
+    <title>Tophair</title>
     <style>
+        @media screen and (min-width: 768px) {
+            .mobile-only {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .desktop-only {
+                display: none;
+            }
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: bisque;
-
+            background-color: aliceblue;
         }
 
-        .container {
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
-            height: max-content;
-            width: 80%;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: antiquewhite;
-            border: 10px solid white;
-            border-radius: 50px;
-        }
-
-        .input_search {
-            border: none;
-            width: 45%;
-            height: 38px;
-            font-family: cursive;
-            border-radius: 15px;
-        }
-
-        h1 {
-            text-align: center;
-            font-family: Futura, Trebuchet MS, Arial, sans-serif;
-            margin-bottom: 32px;
-            font-size: 40px;
-        }
-
-        .filtro {
-            border-radius: 12px;
-            width: 45%;
-            height: 38px;
-            border: none;
-        }
-
-        .filters {
+        .containerButton {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .perfume-list {
+            flex-direction: column;
+            gap: 30px;
             margin-bottom: 50px;
-            justify-content: space-evenly;
-            display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            align-content: space-around;
+        
         }
 
-        .perfume-item {
-            border-radius: 15px;
-            width: 30%;
-            padding: 10px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        button {
+            background: green;
+            height: 80px;
+            width: 80%;
+            border: darkgreen 10px solid;
+            text-transform: uppercase;
+            border-radius: 50px;
+            font-size: 15px;
+        }
+
+        .title {
+            font-size: 32px;
             text-align: center;
-        }
-
-        .mobile-perfume-item {
-            border-radius: 15px;
-            width: 75%;
-            padding: 10px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-        }
-
-        .prezzo {
-            margin: 0px;
-            display: inline-block;
-            position: relative;
-            font-size: 27px;
+            line-height: 50px;
             font-weight: bold;
-            color: gray;
         }
-
-        .prezzo::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            bottom: 17px;
-            width: 151%;
-            height: 3px;
-            background: linear-gradient(to right, gray, gray);
-            rotate: 157deg;
-        }
-
-        .costo {
-            color: maroon;
-            font-size: 54px;
-            margin-bottom: 0px;
-            text-align: justify;
-            margin-bottom: 10px;
-            font-weight: bolder;
-            margin-top: 0px;
-        }
-
-        .nome {
-            text-align: justify;
-            font-weight: bold;
-            font-size: 30px;
-            margin: 20px 0;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .marca {
-            font-weight: bolder;
-            font-size: 23px;
-            color: #666;
-            margin: 20px 0px;
-            /* align-items: center; */
-            text-align: end;
-        }
-
-        .desc {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            margin-bottom: 50px;
-        }
-
-        .scroll-to-top {
-            height: 60px;
-            width: 60px;
-            opacity: 60%;
-            background-color: grey;
-            color: white;
-            border: none;
-            border-radius: 100%;
-            cursor: pointer;
-        }
-
-        .scroll {
-            position: fixed;
-            display: none;
-            width: 100%;
-            justify-content: center;
-        }
-        .thumbnail {
-            cursor: pointer;
-            width: 100px; 
-            height: auto;
-        }
-        
-        /* Stile per il div a schermo intero */
-        .fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        /* Stile per l'immagine a schermo intero */
-        .fullscreen-image {
-            max-width: 90%;
-            max-height: 90%;
-            border: 2px solid white;
-        }
-        .esplora{
-            text-align: center;
-    font-family: emoji;
-    font-size: 22px;
-        }
-        .acquista{
-            align-content: center;
-            padding: 10px 5px;
-            text-shadow: -1px 1px powderblue;
-            text-align: center;
-            color: currentcolor;
-            font-family: emoji;
-            font-size: 27px;
-            border: solid 10px floralwhite;
+        .container{
+            border: 1px solid midnightblue;
             border-radius: 15px;
-            display: block;
+            background-image: url("home-preview.png");
+            background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    height: 97vh;
+    justify-content: space-between;
+    background-position-y: 92px;
+
         }
-        
     </style>
-
-
 </head>
 
 <body>
-    <div class="scroll" id="bar">
-        <button class="scroll-to-top" onclick="scrollToTop()">&#8679</button>
-    </div>
     <div class="container">
-        <h1>Outlet Profumi Grandi Marche</h1>
-        <p class="desc">Benvenuto nel nostro outlet, dove l'eleganza incontra il risparmio.<br> Qui potrai scoprire una
-            selezione esclusiva dei migliori profumi dei pi&#249 rinomati marchi di moda, offerti a prezzi
-            incredibilmente
-            convenienti.<br> Non perdere l'occasione di aggiungere un tocco di lusso alla tua collezione, senza
-            compromessi sul prezzo.</p>
-            <a class="acquista" href="https://www.facebook.com/profile.php?id=61561527584560">Acquista ora</a>
-            <p class="esplora">Esplora la nostra gallery &#8681;</p>    
-        <p style="margin-bottom: 5px;">Ordina per marca</p>
-        <div class="filters">
-            <select class="filtro" id="brand-filter">
-                <option value="">Tutti i marchi</option>
-                <option value="Givenchy">Givenchy</option>
-                <option value="Moschino">Moschino</option>
-                <option value="Tom Ford">Tom Ford</option>
-                <option value="Burberry">Burberry</option>
-                <option value="Hermes">Herm&#232;s</option>
-                <option value="Paco Rabanne">Paco Rabanne</option>
-                <option value="Dior">Dior</option>
-                <option value="Chanel">Chanel</option>
-                <option value="Marc Jacobs">Marc Jacobs</option>
-                <option value="Yves Saint Laurent">Yves Saint Laurent</option>
-                <option value="Gucci">Gucci</option>
-                <!-- Aggiungi altri brand qui -->
-                <!-- Aggiungi altri brand qui -->
-                <!-- Aggiungi altri brand qui -->
-            </select>
-            <input class="input_search" type="text" id="search" placeholder="Cerca profumi...">
-        </div>
-        <div id="perfume-list" class="perfume-list">
-            <!-- I profumi verranno inseriti qui -->
-        </div>
-        <a class="acquista" href="https://www.facebook.com/profile.php?id=61561527584560">Acquista ora</a>
-    </div>
+        <p class="title">
+            Benvenuto da Tophair
+        </p>
 
-    <script>
-       
-
-        window.addEventListener('scroll', function() {
-            var scrollPosition = window.pageYOffset;
-
-            // Mostra il pulsante se lo scroll è oltre i 300px dalla cima
-            if (scrollPosition > 1500) {
-                console.log("ti sei mosso")
-                document.getElementById("bar").style.display = 'flex';
-            } else {
-                document.getElementById("bar").style.display = 'none';
-            }
-        });
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        const perfumes = products = [
-        { id: "art1", name: "Irresistible", brand: "Givenchy", image: "images/art_0.jpg" },
-        { id: "art2", name: "Toy Boy", brand: "Moschino", image: "images/art_1.jpg" },
-        { id: "art3", name: "Toy 2", brand: "Moschino", image: "images/art_2.jpg" },
-        { id: "art4", name: "Oud Wood", brand: "Tom Ford", image: "images/art_3.jpg" },
-        { id: "art5", name: "Weekend", brand: "Burberry", image: "images/art_4.jpg" },
-        { id: "art6", name: "Terre d'Hermes", brand: "Hermes", image: "images/art_5.jpg" },
-        { id: "art7", name: "Invictus", brand: "Paco Rabanne", image: "images/art_6.jpg" },
-        { id: "art8", name: "Sauvage", brand: "Dior", image: "images/art_7.jpg" },
-        { id: "art9", name: "Gabrelle", brand: "Chanel", image: "images/art_8.jpg" },
-        { id: "art10", name: "Dylan Blue", brand: "Versace", image: "images/art_9.jpg" },
-        { id: "art11", name: "Chance", brand: "Chanel", image: "images/art_10.jpg" },
-        { id: "art12", name: "Decadence", brand: "Marc Jacobs", image: "images/art_11.jpg" },
-        { id: "art13", name: "Libre", brand: "Yves Saint Laurent", image: "images/art_12.jpg" },
-        { id: "art14", name: "Flora", brand: "Gucci", image: "images/art_13.jpg" },
-        { id: "art15", name: "Tobacco Vanille", brand: "Tom Ford", image: "images/art_14.jpg" }
-    ];
-        // Funzione per visualizzare i profumi
-    
-// Funzione per visualizzare i profumi
-function displayPerfumes(perfumes) {
-    const perfumeList = document.getElementById('perfume-list');
-    perfumeList.innerHTML = '';
-    perfumes.forEach(perfume => {
-        const perfumeItem = document.createElement('div');
-        if (window.innerWidth < 720) {
-            perfumeItem.className = 'mobile-perfume-item';
-        } else if (window.innerWidth > 720) {
-            perfumeItem.className = 'perfume-item';
-        }
-        perfumeItem.innerHTML = `
-            <img class="thumbnail" style="width: 100%; height: auto;" src="${perfume.image}" alt="${perfume.name}">
-            <p class="nome">${perfume.name}</p>
-            <p class="marca">${perfume.brand}</p>
-            <div >
-                <p class="prezzo">&#8364 120</p>
-                <p class="costo">&#8364 50</p>
+        <div>
+            <p style="    text-align: center;    font-size: 30px;">Cosa vuoi fare:</p>
+            <div class="containerButton">
+                <button>
+                    Sfoglia il nostro catalogo
+                </button>
+                <button>
+                    Prenota
+                </button>
             </div>
-        `;
-        perfumeList.appendChild(perfumeItem);
-    });
-
-    // Aggiungi l'event listener per l'immagine a schermo intero
-    const images = document.querySelectorAll(".thumbnail");
-
-    images.forEach(image => {
-        image.addEventListener("click", function() {
-            openFullscreen(image);
-        });
-    });
-
-    function openFullscreen(image) {
-        // Crea un div per lo schermo intero
-        const fullscreenDiv = document.createElement("div");
-        fullscreenDiv.classList.add("fullscreen");
-
-        // Crea una nuova immagine da visualizzare a schermo intero
-        const fullscreenImg = document.createElement("img");
-        fullscreenImg.src = image.src;
-        fullscreenImg.classList.add("fullscreen-image");
-
-        // Aggiungi l'immagine al div
-        fullscreenDiv.appendChild(fullscreenImg);
-
-        // Aggiungi il div al body
-        document.body.appendChild(fullscreenDiv);
-
-        // Chiudi lo schermo intero al click
-        fullscreenDiv.addEventListener("click", function() {
-            document.body.removeChild(fullscreenDiv);
-        });
-    }
-}
-
-        // Funzione per filtrare i profumi
-        function filterPerfumes() {
-            const brandFilter = document.getElementById('brand-filter').value.toLowerCase();
-            const searchQuery = document.getElementById('search').value.toLowerCase();
-
-            const filteredPerfumes = perfumes.filter(perfume => {
-                const matchesBrand = brandFilter ? perfume.brand.toLowerCase() === brandFilter : true;
-                const matchesSearch = perfume.name.toLowerCase().includes(searchQuery);
-                return matchesBrand && matchesSearch;
-            });
-
-            displayPerfumes(filteredPerfumes);
-        }
-
-        // Event listeners per i filtri
-        document.getElementById('brand-filter').addEventListener('change', filterPerfumes);
-        document.getElementById('search').addEventListener('input', filterPerfumes);
-
-        // Visualizza tutti i profumi all'inizio
-        displayPerfumes(perfumes);
-    </script>
+        </div>
+    </div>
 </body>
 
 </html>
