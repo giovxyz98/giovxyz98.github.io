@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+
+    <title>Tophair</title>
+    <style>
+        @media screen and (min-width: 768px) {
+            .mobile-only {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        body {
+            background-color: aliceblue;
+        }
+
+        .containerButton {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            align-content: space-around;
+
+        }
+
+        button {
+            background: green;
+            height: 80px;
+            width: 80%;
+            border: darkgreen 10px solid;
+            text-transform: uppercase;
+            border-radius: 50px;
+            font-size: 15px;
+        }
+
+        .title {
+            font-size: 36px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+        }
+
+        .container {
+            border: 15px solid black;
+            border-radius: 50px;
+
+            display: flex;
+            flex-direction: column;
+            height: 93vh;
+            justify-content: space-between;
+            background-position-y: 92px;
+            background-color: floralwhite;
+        }
+        .img{
+            height: -webkit-fill-available;
+            width: 100%;
+            background-image: url(home-preview.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="title">
+            Benvenuto da Tophair
+        </p>
+<div class="img"></div>
+        <div>
+            <p style="    text-align: center;    font-size: 30px;">Cosa vuoi fare:</p>
+            <div class="containerButton">
+                <button onclick="acquista()">
+                    Sfoglia il nostro catalogo
+                </button>
+                <button onclick="acquista()">
+                    Prenota
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var acquista = function(){
+            alert("Acquista per avere la versione completa")
+        }
+    </script>
+</body>
+
+</html>

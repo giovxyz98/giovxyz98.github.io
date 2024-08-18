@@ -1,9 +1,9 @@
-<!DOCTYPE html>
 <html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     <title>Tophair</title>
     <style>
@@ -19,82 +19,132 @@
             }
         }
 
-        body {
-            background-color: aliceblue;
-        }
 
-        .containerButton {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-            align-content: space-around;
-
-        }
-
-        button {
-            background: green;
-            height: 80px;
-            width: 80%;
-            border: darkgreen 10px solid;
-            text-transform: uppercase;
-            border-radius: 50px;
-            font-size: 15px;
-        }
 
         .title {
-            font-size: 36px;
+            font-size: 24px;
             text-align: center;
-            line-height: 50px;
+            line-height: 34px;
             font-weight: bold;
+
         }
 
         .container {
-            border: 15px solid black;
+            height: 200px;
+            border: 5px solid black;
             border-radius: 50px;
+            background-color: rgb(64 64 64 / 70%);
 
+            align-content: center;
+        }
+
+        .navbar {
+            position: fixed;
+            width: -webkit-fill-available;
+
+            bottom: 25px;
+            margin-left: 10px;
+            margin-right: 13px;
+            padding: 15px 20px;
+            background-color: rgb(64 64 64);
+            border-radius: 25px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-icons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .acqu {
+            margin-top: 5px;
+            font-size: 10px;
+            margin-bottom: 0px;
+        }
+
+        .icon {
             display: flex;
             flex-direction: column;
-            height: 93vh;
-            justify-content: space-between;
-            background-position-y: 92px;
-            background-color: floralwhite;
+            align-items: center;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            color: black;
+            font-size: 24px;
+            padding: 10px;
+            position: relative;
+            transition: color 0.3s;
+            text-decoration: none;
         }
-        .img{
-            height: -webkit-fill-available;
-            width: 100%;
-            background-image: url(home-preview.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-        
+
+        .icon.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 0px;
+            padding-bottom: 0px;
+
+            color: white;
+        }
+
+        .icon.active::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+            margin-top:5px;
         }
     </style>
 </head>
 
-<body>
+<body style="background-image: url(image-back.jpg);background-size: cover;background-repeat: no-repeat;">
     <div class="container">
         <p class="title">
-            Benvenuto da Tophair
+            Benvenuti da Tophair<br>qui potete prenotare il vostro taglio di capelli <br>o sfogliare il catalogo dei
+            prodotti
         </p>
-<div class="img"></div>
-        <div>
-            <p style="    text-align: center;    font-size: 30px;">Cosa vuoi fare:</p>
-            <div class="containerButton">
-                <button onclick="acquista()">
-                    Sfoglia il nostro catalogo
-                </button>
-                <button onclick="acquista()">
-                    Prenota
-                </button>
-            </div>
+    </div>
+
+
+    <div class="navbar">
+        <div class="navbar-icons">
+            <a href="#" class="icon active">
+                <i class="fas fa-home"></i>
+                <p class="acqu">Home</p>
+            </a>
+            <a href="#" onclick="acquista()" class="icon">
+                <i class="fas fa-calendar-check"></i>
+                <p class="acqu">Prenota</p>
+            </a>
+
+            <a href="#" onclick="acquista()"  class="icon">
+                <i class="fas fa-boxes"></i>
+                <p class="acqu"> Catalogo                </p>
+
+
+            </a>
+
+
         </div>
     </div>
     <script>
-        var acquista = function(){
+        var sizeX = window.innerWidth
+        var sizeY = window.innerHeight
+        setTimeout(function () {
+            document.body.style.backgroundSize = sizeX + "px " + sizeY + "px"
+        }, 1)
+
+        var acquista = function () {
             alert("Acquista per avere la versione completa")
         }
     </script>
+
+
 </body>
 
 </html>
