@@ -23,6 +23,8 @@
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -74,20 +76,20 @@
         <section id="hero" class="relative bg-[#232936] py-20">
             <div
                 class="relative max-w-7xl mx-auto px-6 py-24 text-white flex flex-col md:flex-row items-center md:justify-between gap-20">
-                <div class="max-w-xl">
+                <div class="max-w-xl" data-aos="fade-right">
                     <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Soluzioni Informatiche<br>a Gela</h1>
-                    <p class="mt-4 text-lg md:text-xl">Siti web, e‑commerce, gestionali e assistenza PC su misura.</p>
+                    <p class="mt-4 text-lg md:text-xl">Soluzioni digitali su misura: siti web, e‑commerce, software gestionali e assistenza tecnica per privati e aziende.</p>
                     <a href="#contatti"
                         class="mt-8 inline-block bg-brand-accent text-brand font-semibold px-6 py-3 rounded-xl shadow hover:brightness-110 transition">Richiedi
                         un preventivo</a>
                 </div>
-                <img src="img/tuafoto.jpg" alt="Giovanni Ardore"
+                <img src="img/tuafoto.jpg" alt="Giovanni Ardore" data-aos="zoom-in"
                     class="w-64 h-64 object-cover rounded-full shadow-lg mx-auto self-center md:mx-0 md:self-auto" />
             </div>
         </section>
 
         <!-- Chi sono -->
-        <section id="chi-sono" class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12">
+        <section id="chi-sono" class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12" data-aos="zoom-in">
 
             <!-- colonna sinistra (invariata) -->
             <div>
@@ -97,14 +99,14 @@
                     Dopo anni in grandi aziende ho riportato esperienza e passione nella mia città.
                     Realizzo siti web super-rapidi e ottimizzati SEO, e-commerce, gestionali e altri prodotti software
                     su misura.
-                    Se cerchi una soluzione digitale affidabile, sei nel posto giusto
+                    Se cerchi una soluzione digitale affidabile, sei nel posto giusto.
                 </p>
             </div>
 
             <!-- colonna destra -->
-            <ul class="space-y-3 text-gray-200 self-center"> <!-- ⬅️ self-center = centrazione verticale -->
+            <ul class="space-y-3 text-gray-200 self-center" data-aos="fade-up" > 
                 <li class="flex items-start">
-                    <span class="text-brand-accent mt-0.5 mr-3">✔</span>
+                    <span class="text-brand-accent mt-0.5 mr-3" >✔</span>
                     <span>Esperienza consolidata</span>
                 </li>
                 <li class="flex items-start">
@@ -119,7 +121,7 @@
         </section>
 
 
-        <section id="servizi" class="mx-auto px-4 pb-24 max-w-full sm:max-w-xl">
+        <section id="servizi" class="mx-auto px-4 pb-24 max-w-full sm:max-w-xl" data-aos="zoom-in">
             <h2
                 class="service-card justify-self-center w-56 sm:w-64 h-auto text-3xl font-bold mb-8 text-white text-center">
                 Servizi
@@ -224,41 +226,23 @@
 
 
         <!-- Non trovato -->
-        <section class="bg-brand text-white py-16 px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4">Non hai trovato ciò che cerchi?</h2>
-                <p class="mb-8 text-gray-300">Raccontami il tuo problema, troveremo la soluzione.</p>
-                <a href="#contatti"
-                    class="inline-block bg-brand-accent text-brand font-semibold px-8 py-3 rounded-xl shadow hover:brightness-110 transition">Contattami
-                    ora</a>
-            </div>
-        </section>
+        <section class="bg-brand-accent text-brand py-16 px-6 text-center" data-aos="fade-up">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">Hai un progetto in mente?</h2>
+      <p class="mb-8">Parliamone senza impegno: troveremo la soluzione più adatta alle tue esigenze.</p>
+      <a href="contatti.html" class="inline-block bg-brand text-brand-accent font-semibold px-8 py-3 rounded-xl hover:opacity-90 transition">Contattami ora</a>
+    </section>
+  </main>
 
-        <!-- Contatti -->
-        <section id="contatti" class="max-w-3xl mx-auto px-6 py-24">
-            <h2 class="text-3xl font-bold mb-8 text-white">Contattami</h2>
-            <form action="https://formspree.io/f/your-id" method="POST" class="space-y-6">
-                <input type="text" name="name" placeholder="Nome" required
-                    class="w-full bg-white rounded-xl p-4 shadow" />
-                <input type="email" name="email" placeholder="Email" required
-                    class="w-full bg-white rounded-xl p-4 shadow" />
-                <textarea name="message" rows="5" placeholder="Messaggio" required
-                    class="w-full bg-white rounded-xl p-4 shadow"></textarea>
-                <div class="flex justify-end">
-                    <button type="submit"
-                        class="bg-brand-accent text-brand font-semibold px-8 py-3 rounded-xl shadow hover:brightness-110 transition">
-                        Invia
-                    </button>
-                </div>
-            </form>
-        </section>
+       
     </main>
 
     <!-- Footer -->
     <footer class="bg-brand/80 text-gray-400 py-8 text-center text-sm">
         © 2025 Giovanni Ardore · P.IVA 00000000000
     </footer>
+    
     <script>
+        AOS.init({ duration: 800 });
         document.getElementById('menu-btn')
             .addEventListener('click', () =>
                 document.getElementById('menu').classList.toggle('hidden'));
