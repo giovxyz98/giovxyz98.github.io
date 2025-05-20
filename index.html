@@ -37,7 +37,6 @@
             }
         }
     </script>
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -50,15 +49,27 @@
     <!-- Header -->
     <header class="relative bg-brand/90 backdrop-blur sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl border-b border-b-gray-300 mx-auto flex items-center justify-between py-4 px-6">
-            <a href="#hero" class="font-bold text-lg text-white">Giovanni Ardore</a>
-            <nav class="hidden md:flex space-x-6 text-sm font-semibold text-white relative">
-                <a href="#hero" class="hover:text-brand-accent">Home</a>
-                <a href="/servizi/">Servizi</a>
-                <a href="/chi-sono.html">Chi sono</a>
-                <a href="/contatti.html">Contatti</a>
-            </nav>
+
+            <a href="#hero" class="font-bold text-lg text-white">Giovanni Ardore</a>
+            <button id="menu-btn" class="md:hidden p-2" aria-label="Apri menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+         <nav id="menu" class="hidden absolute left-0 top-full w-full bg-brand/95 px-6 py-4 shadow-lg
+    flex flex-col gap-4
+    md:static md:w-full md:bg-transparent md:shadow-none md:p-0
+    md:flex md:flex-row md:space-x-6 md:justify-end
+    text-sm font-semibold text-white">
+    <a href="#hero" class="hover:text-brand-accent">Home</a>
+    <a href="./servizi/" class="hover:text-brand-accent">Servizi</a>
+    <a href="./chi-sono.html">Chi sono</a>
+    <a href="./contatti.html">Contatti</a>
+</nav>
+        
         </div>
     </header>
+
 
     <!-- Hero -->
     <main>
@@ -79,125 +90,137 @@
 
         <!-- Chi sono -->
         <section id="chi-sono" class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12">
+
+            <!-- colonna sinistra (invariata) -->
             <div>
-                <h2 class="text-3xl font-bold mb-4 text-white">Chi sono</h2>
-                <p class="text-gray-300 leading-relaxed">Ciao, sono Giovanni Ardore, ingegnere informatico di Gela.
+                <h2 class="text-3xl font-bold mb-4 text-white">Chi&nbsp;sono</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    Ciao, sono Giovanni Ardore, ingegnere informatico di Gela.
                     Dopo anni in grandi aziende ho riportato esperienza e passione nella mia città.
                     Realizzo siti web super-rapidi e ottimizzati SEO, e-commerce, gestionali e altri prodotti software
                     su misura.
-                    Se cerchi una soluzione digitale affidabile, sei nel posto giusto</p>
+                    Se cerchi una soluzione digitale affidabile, sei nel posto giusto
+                </p>
             </div>
-            <ul class="space-y-3 text-gray-200 flex flex-col items-center text-center">
-                <li class="flex items-start justify-center">
-                    <span class="text-brand-accent mt-0.5">✔</span>
-                    <span class="ml-3">Esperienza consolidata</span>
+
+            <!-- colonna destra -->
+            <ul class="space-y-3 text-gray-200 self-center"> <!-- ⬅️ self-center = centrazione verticale -->
+                <li class="flex items-start">
+                    <span class="text-brand-accent mt-0.5 mr-3">✔</span>
+                    <span>Esperienza consolidata</span>
                 </li>
-                <li class="flex items-start justify-center">
-                    <span class="text-brand-accent mt-0.5">✔</span>
-                    <span class="ml-3">Approccio personalizzato</span>
+                <li class="flex items-start">
+                    <span class="text-brand-accent mt-0.5 mr-3">✔</span>
+                    <span>Approccio personalizzato</span>
                 </li>
-                <li class="flex items-start justify-center">
-                    <span class="text-brand-accent mt-0.5">✔</span>
-                    <span class="ml-3">Supporto continuo</span>
+                <li class="flex items-start">
+                    <span class="text-brand-accent mt-0.5 mr-3">✔</span>
+                    <span>Supporto continuo</span>
                 </li>
             </ul>
         </section>
 
-        <!-- ===== SEZIONE SERVIZI ===== -->
-       <!-- ===== SEZIONE SERVIZI (accenti bianchi) ===== -->
-<section id="servizi" class="mx-auto px-4 pb-24 max-w-full sm:max-w-xl">
-    <h2 class="service-card justify-self-center w-56 sm:w-64 h-auto text-3xl font-bold mb-8 text-white text-center">
-        Servizi
-    </h2>
 
-    <div class="servizi-swiper swiper relative mx-auto w-full sm:max-w-xl">
-        <div class="swiper-wrapper">
+        <section id="servizi" class="mx-auto px-4 pb-24 max-w-full sm:max-w-xl">
+            <h2
+                class="service-card justify-self-center w-56 sm:w-64 h-auto text-3xl font-bold mb-8 text-white text-center">
+                Servizi
+            </h2>
 
-            <!-- Sito vetrina -->
-            <div class="swiper-slide flex justify-center overflow-visible">
-                <article
-                    class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
-                    data-link="/servizi/sito-vetrina">
-                    <span class="text-3xl mb-3">📄</span>
-                    <h3 class="font-semibold mb-2 text-white text-base">Sito vetrina</h3>
-                    <p class="text-xs text-gray-300 flex-grow">Porta la tua azienda online in 10 giorni.</p>
-                    <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
-                </article>
+            <div class="p-[30px] servizi-swiper swiper relative mx-auto w-full sm:max-w-xl">
+                <div class="swiper-wrapper">
+
+                    <!-- Sito vetrina -->
+                    <div class="swiper-slide flex justify-center overflow-visible">
+                        <article
+                            class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                            data-link="/servizi/sito-vetrina">
+                            <span class="text-3xl mb-3">📄</span>
+                            <h3 class="font-semibold mb-2 text-white text-base">Sito vetrina</h3>
+                            <p class="text-xs text-gray-300 flex-grow">Porta la tua azienda online in 10 giorni.</p>
+                            <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
+                        </article>
+                    </div>
+
+                    <!-- E-commerce -->
+                    <div class="swiper-slide flex justify-center overflow-visible">
+                        <article
+                            class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                            data-link="/servizi/ecommerce">
+                            <span class="text-3xl mb-3">🛒</span>
+                            <h3 class="font-semibold mb-2 text-white text-base">E-commerce</h3>
+                            <p class="text-xs text-gray-300 flex-grow">Vendi 24/7 con pagamenti sicuri.</p>
+                            <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
+                        </article>
+                    </div>
+
+                    <!-- Gestionale -->
+                    <div class="swiper-slide flex justify-center overflow-visible">
+                        <article
+                            class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                            data-link="/servizi/gestionale-magazzino">
+                            <span class="text-3xl mb-3">📦</span>
+                            <h3 class="font-semibold mb-2 text-white text-base">Gestionale magazzino</h3>
+                            <p class="text-xs text-gray-300 flex-grow">Stop ai fogli Excel, stock sotto controllo.
+                            </p>
+                            <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
+                        </article>
+                    </div>
+
+                    <!-- Assemblaggio PC -->
+                    <div class="swiper-slide flex justify-center overflow-visible">
+                        <article
+                            class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                            data-link="/servizi/assemblaggio-pc">
+                            <span class="text-3xl mb-3">🖥️</span>
+                            <h3 class="font-semibold mb-2 text-white text-base">Assemblaggio PC</h3>
+                            <p class="text-xs text-gray-300 flex-grow">Gaming o ufficio, pronto in 48 h.</p>
+                            <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
+                        </article>
+                    </div>
+
+                    <!-- Formattazione PC -->
+                    <div class="swiper-slide flex justify-center overflow-visible">
+                        <article
+                            class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                            data-link="/servizi/formattazione-pc">
+                            <span class="text-3xl mb-3">💾</span>
+                            <h3 class="font-semibold mb-2 text-white text-base">Formattazione PC</h3>
+                            <p class="text-xs text-gray-300 flex-grow">PC di nuovo veloce in 1 ora.</p>
+                            <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
+                        </article>
+                    </div>
+
+                </div>
+
+                <!-- Frecce -->
+                <div
+                    class="swiper-button-prev servizi-prev !text-white w-10 h-10 absolute left-0 top-1/2 -translate-y-1/2 z-10">
+                </div>
+                <div
+                    class="swiper-button-next servizi-next !text-white w-10 h-10 absolute right-0 top-1/2 -translate-y-1/2 z-10">
+                </div>
             </div>
 
-            <!-- E-commerce -->
-            <div class="swiper-slide flex justify-center overflow-visible">
-                <article
-                    class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
-                    data-link="/servizi/ecommerce">
-                    <span class="text-3xl mb-3">🛒</span>
-                    <h3 class="font-semibold mb-2 text-white text-base">E-commerce</h3>
-                    <p class="text-xs text-gray-300 flex-grow">Vendi 24/7 con pagamenti sicuri.</p>
-                    <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
-                </article>
-            </div>
+        </section>
 
-            <!-- Gestionale -->
-            <div class="swiper-slide flex justify-center overflow-visible">
-                <article
-                    class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
-                    data-link="/servizi/gestionale-magazzino">
-                    <span class="text-3xl mb-3">📦</span>
-                    <h3 class="font-semibold mb-2 text-white text-base">Gestionale magazzino</h3>
-                    <p class="text-xs text-gray-300 flex-grow">Stop ai fogli Excel, stock sotto controllo.</p>
-                    <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
-                </article>
-            </div>
-
-            <!-- Assemblaggio PC -->
-            <div class="swiper-slide flex justify-center overflow-visible">
-                <article
-                    class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
-                    data-link="/servizi/assemblaggio-pc">
-                    <span class="text-3xl mb-3">🖥️</span>
-                    <h3 class="font-semibold mb-2 text-white text-base">Assemblaggio PC</h3>
-                    <p class="text-xs text-gray-300 flex-grow">Gaming o ufficio, pronto in 48 h.</p>
-                    <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
-                </article>
-            </div>
-
-            <!-- Formattazione PC -->
-            <div class="swiper-slide flex justify-center overflow-visible">
-                <article
-                    class="service-card bg-[#1B2537] text-white rounded-3xl shadow-xl shadow-white/30 px-8 py-10 w-64 h-[340px] flex flex-col items-center text-center border border-white/20 hover:scale-105 transition-transform duration-300 cursor-pointer"
-                    data-link="/servizi/formattazione-pc">
-                    <span class="text-3xl mb-3">💾</span>
-                    <h3 class="font-semibold mb-2 text-white text-base">Formattazione PC</h3>
-                    <p class="text-xs text-gray-300 flex-grow">PC di nuovo veloce in 1 ora.</p>
-                    <button class="mt-4 text-xs font-semibold text-white underline">Scopri</button>
-                </article>
-            </div>
-
-        </div>
-
-        <!-- Frecce -->
-        <div class="swiper-button-prev servizi-prev !text-white w-10 h-10 absolute left-0 top-1/2 -translate-y-1/2 z-10"></div>
-        <div class="swiper-button-next servizi-next !text-white w-10 h-10 absolute right-0 top-1/2 -translate-y-1/2 z-10"></div>
-    </div>
-</section>
-
-<!-- Swiper init -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    new Swiper('.servizi-swiper', {
-        centeredSlides: true,
-        centeredSlidesBounds: true,
-        slidesPerView: 1,
-        loop: true,
-        grabCursor: true,
-        effect: 'coverflow',
-        coverflowEffect: { rotate: 0, stretch: 20, depth: 80, modifier: 2, slideShadows: false },
-        navigation: { nextEl: '.servizi-next', prevEl: '.servizi-prev' },
-        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-    });
-});
-</script>
+        <!-- Swiper init -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                new Swiper('.servizi-swiper', {
+                    centeredSlides: true,
+                    centeredSlidesBounds: true,
+                    slidesPerView: 1,
+                    loop: true,
+                    grabCursor: true,
+                    effect: 'coverflow',
+                    coverflowEffect: { rotate: 0, stretch: 20, depth: 80, modifier: 2, slideShadows: false },
+                    navigation: { nextEl: '.servizi-next', prevEl: '.servizi-prev' },
+                    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+                });
+            });
+        </script>
 
 
 
@@ -223,8 +246,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     class="w-full bg-white rounded-xl p-4 shadow" />
                 <textarea name="message" rows="5" placeholder="Messaggio" required
                     class="w-full bg-white rounded-xl p-4 shadow"></textarea>
-                <button type="submit"
-                    class="bg-brand-accent text-brand font-semibold px-8 py-3 rounded-xl shadow hover:brightness-110 transition">Invia</button>
+                <div class="flex justify-end">
+                    <button type="submit"
+                        class="bg-brand-accent text-brand font-semibold px-8 py-3 rounded-xl shadow hover:brightness-110 transition">
+                        Invia
+                    </button>
+                </div>
             </form>
         </section>
     </main>
@@ -233,9 +260,13 @@ document.addEventListener('DOMContentLoaded', () => {
     <footer class="bg-brand/80 text-gray-400 py-8 text-center text-sm">
         © 2025 Giovanni Ardore · P.IVA 00000000000
     </footer>
+    <script>
+        document.getElementById('menu-btn')
+            .addEventListener('click', () =>
+                document.getElementById('menu').classList.toggle('hidden'));
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    </script>
+
 
 </body>
 
