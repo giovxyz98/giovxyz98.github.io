@@ -1,129 +1,89 @@
-<!DOCTYPE html>
-<html lang="it">
+<!doctype html>
+<html lang=it>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
     <title>Giovanni Ardore | Soluzioni Informatiche a Gela</title>
-    <!-- SEO essentials -->
-    <meta name="description"
-        content="Sviluppo siti web, e‑commerce, gestionali e assistenza PC a Gela. Soluzioni digitali su misura firmate Giovanni Ardore." />
-    <meta name="keywords"
-        content="sviluppo siti web Gela, ecommerce Gela, gestionali su misura, assistenza PC Gela, Giovanni Ardore" />
-    <link rel="canonical" href="https://giovanniardore.it/" />
-    <!-- Open Graph / social -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Giovanni Ardore | Soluzioni Informatiche a Gela" />
-    <meta property="og:description" content="Siti web, e‑commerce, gestionali e assistenza PC su misura a Gela." />
-    <meta property="og:url" content="https://giovanniardore.it/" />
-    <meta property="og:image" content="https://giovanniardore.it/img/og-image.jpg" />
-
-    <!-- Swiper carousel -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            DEFAULT: '#0F1724',
-                            accent: '#FACC15'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name=description
+        content="Sviluppo siti web, e‑commerce, gestionali e assistenza PC a Gela. Soluzioni digitali su misura firmate Giovanni Ardore.">
+    <meta name=keywords
+        content="sviluppo siti web Gela, ecommerce Gela, gestionali su misura, assistenza PC Gela, Giovanni Ardore">
+    <link rel=canonical href=https://giovanniardore.it/>
+    <meta property=og:type content=website>
+    <meta property=og:title content="Giovanni Ardore | Soluzioni Informatiche a Gela">
+    <meta property=og:description content="Siti web, e‑commerce, gestionali e assistenza PC su misura a Gela.">
+    <meta property=og:url content=https://giovanniardore.it/>
+    <meta property=og:image content=https://giovanniardore.it/img/og-image.jpg>
+    <link rel=stylesheet href=https://unpkg.com/swiper/swiper-bundle.min.css>
+    <script src=https://cdn.tailwindcss.com></script>
+    <script>tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: "#0F1724", accent: "#FACC15" } } } } }</script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel=stylesheet>
     <style>
         body {
-            font-family: 'Inter', sans-serif
+            font-family: Inter, sans-serif
         }
     </style>
 </head>
 
 <body class="bg-brand text-gray-100 antialiased scroll-smooth">
-    <!-- Header -->
     <header class="relative bg-brand/90 backdrop-blur sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl border-b border-b-gray-300 mx-auto flex items-center justify-between py-4 px-6">
-            <a href="index.html" class="font-bold text-lg text-white whitespace-nowrap">Giovanni Ardore</a>
-            <button id="menu-btn" class="md:hidden p-2" aria-label="Apri menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-            <nav id="menu" class="hidden absolute left-0 top-full w-full bg-brand/95 px-6 py-4 shadow-lg
-        flex flex-col gap-4
-        md:static md:w-auto md:bg-transparent md:shadow-none md:p-0
-        md:flex md:flex-row md:space-x-6 md:justify-end
-        text-sm font-semibold text-white">
-                <a href="index.html" class="hover:text-brand-accent">Home</a>
-                <a href="servizi.html" class="hover:text-brand-accent">Servizi</a>
-                <a href="./chi-sono.html">Chi sono</a>
-                <a href="./contatti.html">Contatti</a>
-            </nav>
+        <div class="max-w-7xl border-b border-b-gray-300 mx-auto flex items-center justify-between py-4 px-6"><a
+                href=index.html class="font-bold text-lg text-white whitespace-nowrap">Giovanni Ardore</a><button
+                id=menu-btn class="md:hidden p-2" aria-label="Apri menu"><svg class="w-6 h-6" fill=none
+                    stroke=currentColor stroke-width=2 viewBox="0 0 24 24">
+                    <path stroke-linecap=round stroke-linejoin=round d="M4 6h16M4 12h16M4 18h16" />
+                </svg></button>
+            <nav id=menu
+                class="hidden absolute left-0 top-full w-full bg-brand/95 px-6 py-4 shadow-lg flex flex-col gap-4 md:static md:w-auto md:bg-transparent md:shadow-none md:p-0 md:flex md:flex-row md:space-x-6 md:justify-end text-sm font-semibold text-white">
+                <a href=index.html class=hover:text-brand-accent>Home</a><a href=servizi.html
+                    class=hover:text-brand-accent>Servizi</a><a href=./chi-sono.html>Chi sono</a><a
+                    href=./contatti.html>Contatti</a></nav>
         </div>
     </header>
-
-
     <main>
-        <section class="bg-[#232936] py-20" data-aos="fade-up">
+        <section class="bg-[#232936] py-20" data-aos=fade-up>
             <div class="max-w-3xl mx-auto px-6 text-center text-white">
                 <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Contatti</h1>
-                <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
-                    Scrivimi per informazioni, preventivi o richieste di assistenza. Ti risponderò il prima possibile!
-                </p>
+                <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">Scrivimi per informazioni, preventivi o
+                    richieste di assistenza. Ti risponderò il prima possibile!</p>
             </div>
         </section>
-<section class="max-w-3xl mx-auto px-6 py-16">
-    <h2 class="text-xl font-semibold text-white mb-6 text-center">Hai una domanda, un progetto o vuoi semplicemente saperne di più?
-Compila il modulo qui sotto!</h2>
-    <form class="bg-[#1B2537] rounded-2xl p-8 shadow-lg space-y-6" autocomplete="off">
-       
         <section class="max-w-3xl mx-auto px-6 py-16">
-            <form class="bg-[#1B2537] rounded-2xl p-8 shadow-lg space-y-6" autocomplete="off">
-                <div>
-                    <label for="nome" class="block text-gray-200 font-semibold mb-1">Nome</label>
-                    <input type="text" id="nome" name="nome" required
-                        class="w-full rounded-lg px-4 py-2  text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-accent" />
-                </div>
-                <div>
-                    <label for="email" class="block text-gray-200 font-semibold mb-1">Email</label>
-                    <input type="email" id="email" name="email" required
-                        class="w-full rounded-lg px-4 py-2  text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-accent" />
-                </div>
-                <div>
-                    <label for="messaggio" class="block text-gray-200 font-semibold mb-1">Messaggio</label>
-                    <textarea id="messaggio" name="messaggio" rows="5" required
-                        class="w-full rounded-lg px-4 py-2  text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-accent"></textarea>
-                </div>
-                <button type="submit"
-                    class="bg-brand-accent text-brand font-semibold px-8 py-3 rounded-xl shadow hover:brightness-110 transition w-full">Invia
-                    messaggio</button>
+            <h2 class="text-xl font-semibold text-white mb-6 text-center">Hai una domanda, un progetto o vuoi
+                semplicemente saperne di più? Compila il modulo qui sotto!</h2>
+            <form class="bg-[#1B2537] rounded-2xl p-8 shadow-lg space-y-6" autocomplete=off>
+                <section class="max-w-3xl mx-auto px-6 py-16">
+                    <form class="bg-[#1B2537] rounded-2xl p-8 shadow-lg space-y-6" autocomplete=off>
+                        <div><label for=nome class="block text-gray-200 font-semibold mb-1">Nome</label><input id=nome
+                                name=nome required
+                                class="w-full rounded-lg px-4 py-2 text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-accent">
+                        </div>
+                        <div><label for=email class="block text-gray-200 font-semibold mb-1">Email</label><input
+                                type=email id=email name=email required
+                                class="w-full rounded-lg px-4 py-2 text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-accent">
+                        </div>
+                        <div><label for=messaggio
+                                class="block text-gray-200 font-semibold mb-1">Messaggio</label><textarea id=messaggio
+                                name=messaggio rows=5 required
+                                class="w-full rounded-lg px-4 py-2 text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-brand-accent"></textarea>
+                        </div><button type=submit
+                            class="bg-brand-accent text-brand font-semibold px-8 py-3 rounded-xl shadow hover:brightness-110 transition w-full">Invia
+                            messaggio</button>
+                    </form>
+                    <div class="mt-12 text-center text-gray-300 space-y-2">
+                        <div><span class="font-semibold text-white">Email:</span> <a href=mailto:info@giovanniardore.it
+                                class=hover:text-brand-accent>info@giovanniardore.it</a></div>
+                        <div><span class="font-semibold text-white">Telefono:</span> <a href=tel:+391234567890
+                                class=hover:text-brand-accent>+39 123 4567890</a></div>
+                    </div>
+                </section>
             </form>
-
-            <div class="mt-12 text-center text-gray-300 space-y-2">
-                <div><span class="font-semibold text-white">Email:</span> <a href="mailto:info@giovanniardore.it"
-                        class="hover:text-brand-accent">info@giovanniardore.it</a></div>
-                <div><span class="font-semibold text-white">Telefono:</span> <a href="tel:+391234567890"
-                        class="hover:text-brand-accent">+39 123 4567890</a></div>
-            </div>
         </section>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-brand/80 text-gray-400 py-8 text-center text-sm">
-        © 2025 Giovanni Ardore · P.IVA 00000000000
+    <footer class="bg-brand/80 text-gray-400 py-8 text-center text-sm">© 2025 Giovanni Ardore · P.IVA 00000000000
     </footer>
-
-    <script>
-        document.getElementById('menu-btn').addEventListener('click', () => {
-            document.getElementById('menu').classList.toggle('hidden')
-        })
-    </script>
+    <script>document.getElementById("menu-btn").addEventListener("click", (() => { document.getElementById("menu").classList.toggle("hidden") }))</script>
 </body>
 
 </html>
