@@ -1,14 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Impostore</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <h1 class="title">Gioco dell'Impostore</h1>
+  <div id="lista-giocatori">
+
+  </div>
   <div class="container-buttons">
-  <button id="aggiungi_giocatore">Aggiungi Giocatore</button>
-</div>
-  <script src="app.js"></script>
+    <button id="aggiungi_giocatore" onclick="aggiungi_giocatore()">Aggiungi Giocatore</button>
+  </div>
+  <script>
+     async function fetchData() {
+        try {
+          const response = await fetch("https://project-e5z4gru1u-giovxyz98s-projects.vercel.app/api/lista_giocatori");
+          if (!response.ok) {
+            throw new Error(`Errore: ${response.status}`);
+            alert("Si è verificato un errore durante il caricamento della lista giocatori. Riprova più tardi.");
+
+          }
+          data = await response.json();
+          if (data &&data.length > 0) {
+            document.getElementById("lista-giocatori").innerHTML = "";
+            data.forEach(giocatore => {
+              const giocatoreDiv = document.createElement("div");
+              giocatoreDiv.textContent = giocatore.nome;
+              document.getElementById("lista-giocatori").appendChild(giocatoreDiv);
+            });
+          }
+        } catch (error) {
+          console.error("Errore nella chiamata API:", error.message);
+          alert("Si è verificato un errore durante il caricamento della lista giocatori. Riprova più tardi.");
+        }
+      }
+      fetchData();
+    
+      function aggiungi_giocatore() {
+      const nome = prompt("Inserisci il nome del giocatore:");
+      if (nome) {
+        fetch("https://project-e5z4gru1u-giovxyz98s-projects.vercel.app/api/aggiungi_giocatore", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ nome })
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`Errore: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            alert(data.message);
+            fetchData(); 
+            
+          })
+          .catch(error => {
+            console.error("Errore nella chiamata API:", error.message);
+            alert("Si è verificato un errore durante l'aggiunta del giocatore. Riprova più tardi.");
+          });
+      }
+    }
+  </script>
 </body>
+
 </html>
