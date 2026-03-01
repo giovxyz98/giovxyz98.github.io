@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Impostore</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      background: linear-gradient(135deg, #FFFAFA, #E6F0FF);
+    }
+
+    .title {
+      font-size: clamp(24px, 8vw, 48px);
+      font-weight: 900;
+      text-align: center;
+      color: #1E1E1E;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+      margin: 2vh 1vh;
+    }
+
+    .container-buttons {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+    }
+
+    button {
+      min-height: 8vh;
+      padding: 2vh 0;
+      border: none;
+      border-radius: 2vw;
+      background: linear-gradient(135deg, #FF4E50, #1E90FF);
+      color: #fff;
+      font-size: clamp(14px, 4vw, 18px);
+      font-weight: 700;
+      text-align: center;
+      box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: all 0.25s ease-in-out;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #FF6677, #3A9EFF);
+      box-shadow: 0 0.6vh 2.4vh rgba(0, 0, 0, 0.2);
+      transform: translateY(-0.2vh);
+    }
+
+    button:active {
+      background: linear-gradient(135deg, #E63946, #1C75D8);
+      box-shadow: 0 0.25vh 1.2vh rgba(0, 0, 0, 0.15);
+      transform: translateY(0.1vh);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main-container" style="height: 100%; width: 100%;">
+    <h1 class="title">Gioco dell'Impostore</h1>
+    <div class="container-buttons">
+      <button onclick="goToPage('lista.html')" id="lista_giocatori">Lista Giocatori</button>
+      <button onclick="inizia_partita()" id="inizia_partita">Inizia Partita</button>
+    </div>
+  </div>
+  <div id="game-container" style="display: none; height: 100%; width: 100%;">
+  <div class="card-giocatore">
+
+  </div>
+
+  </div>
+  <script>
+    function goToPage(page) {
+      window.location.href = page;
+    }
+    function inizia_partita() {
+      document.getElementById("main-container").style.display = "none";
+      document.getElementById("game-container").style.display = "block";
+      async function fetchData() {
+        try {
+          const response = await fetch("https://project-9qudine61-giovxyz98s-projects.vercel.app/api/nuova_partita"); 
+          if (!response.ok) {
+            throw new Error(`Errore: ${response.status}`);
+          }
+          const data = await response.json();
+          console.log(data);
+        } catch (error) {
+          console.error("Errore nella chiamata API:", error.message);
+        }
+      }
+      fetchData();
+    }
+  </script>
+</body>
+
+</html>
