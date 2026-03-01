@@ -1,2 +1,0 @@
-Creare account fromspree e cambiarlo nel documento.
-Il CDN va bene per prototipi, ma in produzione compila Tailwind nel tuo bundle.
