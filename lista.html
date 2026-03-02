@@ -8,64 +8,100 @@
 
 <body>
   <h1 class="title">Gioco dell'Impostore</h1>
-  <div id="lista-giocatori">
+  <div class="lista-giocatori" id="lista-giocatori">
 
   </div>
   <div class="container-buttons">
     <button id="aggiungi_giocatore" onclick="aggiungi_giocatore()">Aggiungi Giocatore</button>
+    <button onclick="location.href='index.html'">Torna alla home</button>
   </div>
   <script>
-     async function fetchData() {
-        try {
-          const response = await fetch("https://project-e5z4gru1u-giovxyz98s-projects.vercel.app/api/lista_giocatori");
-          if (!response.ok) {
-            throw new Error(`Errore: ${response.status}`);
-            alert("Si è verificato un errore durante il caricamento della lista giocatori. Riprova più tardi.");
+    async function fetchData() {
+      try {
+        const response = await fetch("https://project-e5z4gru1u-giovxyz98s-projects.vercel.app/api/lista_giocatori");
+        if (!response.ok) {
+          throw new Error(`Errore: ${response}`);
 
-          }
-          data = await response.json();
-          if (data &&data.length > 0) {
-            document.getElementById("lista-giocatori").innerHTML = "";
-            data.forEach(giocatore => {
-              const giocatoreDiv = document.createElement("div");
-              giocatoreDiv.textContent = giocatore.nome;
-              document.getElementById("lista-giocatori").appendChild(giocatoreDiv);
-            });
-          }
-        } catch (error) {
-          console.error("Errore nella chiamata API:", error.message);
-          alert("Si è verificato un errore durante il caricamento della lista giocatori. Riprova più tardi.");
         }
-      }
-      fetchData();
-    
-      function aggiungi_giocatore() {
-      const nome = prompt("Inserisci il nome del giocatore:");
-      if (nome) {
-        fetch("https://project-e5z4gru1u-giovxyz98s-projects.vercel.app/api/aggiungi_giocatore", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ nome })
-        })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`Errore: ${response.status}`);
-            }
-            return response.json();
-          })
-          .then(data => {
-            alert(data.message);
-            fetchData(); 
-            
-          })
-          .catch(error => {
-            console.error("Errore nella chiamata API:", error.message);
-            alert("Si è verificato un errore durante l'aggiunta del giocatore. Riprova più tardi.");
+        const data = await response.json();
+        if (data && data.length > 0) {
+          document.getElementById("lista-giocatori").innerHTML = "";
+          data.forEach(giocatore => {
+            const giocatoreDiv = document.createElement("div");
+            const nomeGiocatore = document.createElement("span");
+            nomeGiocatore.className = "giocatore"; // Aggiunta classe per il CSS
+            nomeGiocatore.textContent = giocatore.nome;
+            giocatoreDiv.className = "giocatore-container"; // Aggiunta classe per il CSS
+            giocatoreDiv.appendChild(nomeGiocatore);
+            const rimuoviButton = document.createElement("button");
+            rimuoviButton.textContent = "Rimuovi";
+            rimuoviButton.onclick = () => {
+              if (confirm(`Vuoi davvero rimuovere il giocatore ${giocatore.nome}?`)) {
+                rimuovi_giocatore(giocatore.nome);
+              }
+            };
+
+            giocatoreDiv.appendChild(rimuoviButton);
+            document.getElementById("lista-giocatori").appendChild(giocatoreDiv);
           });
+        }
+      } catch (error) {
+        console.error("Errore nella chiamata API:", error);
+        alert("Si è verificato un errore durante il caricamento della lista giocatori. Riprova più tardi.");
       }
     }
+
+    function aggiungi_giocatore() {
+      const nome = prompt("Inserisci il nome del giocatore:");
+      if (!nome) return;
+
+      fetch("https://project-a5frh1ng5-giovxyz98s-projects.vercel.app/api/aggiungi_giocatore", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome })
+      })
+        .then(async response => {
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error || "Errore generico");
+          }
+          return data;
+        })
+        .then(data => {
+          fetchData();
+          alert("Giocatore aggiunto: " + data.nome);
+        })
+        .catch(error => {
+          console.error("Errore nella chiamata API:", error.message);
+          alert(error.message);
+        });
+    }
+    function rimuovi_giocatore(nome) {
+      fetch("https://project-a5frh1ng5-giovxyz98s-projects.vercel.app/api/rimuovi_giocatore", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nome })
+      })
+        .then(async response => {
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error || "Errore generico");
+          }
+          return data;
+        })
+        .then(() => {
+          fetchData();
+          alert(`Giocatore rimosso: ${nome}`);
+        })
+        .catch(error => {
+          console.error("Errore nella chiamata API:", error.message);
+          alert(error.message);
+        });
+    }
+
+    fetchData();
   </script>
 </body>
 
