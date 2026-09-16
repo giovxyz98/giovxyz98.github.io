@@ -1,2 +1,4 @@
-Creare account fromspree e cambiarlo nel documento.
-Il CDN va bene per prototipi, ma in produzione compila Tailwind nel tuo bundle.
+1	Creare account Formspree e sostituire "YOUR_FORM_ID" nell'action del form in contatti.html.
+2	FATTO: Tailwind ora e' compilato in locale e inlinato (vedi scripts/build.mjs), non piu' da CDN.
+3	Dopo ogni modifica a *.html o src/styles.css / src/app.js, lanciare "npm run build" prima di carica.bat (carica.bat lo fa gia' in automatico).
+4	Se attivi il dominio custom giovanniardore.it, aggiungere un file CNAME nella root e aggiornare i link canonical/og:url nelle pagine (ora puntano a giovxyz98.github.io).
