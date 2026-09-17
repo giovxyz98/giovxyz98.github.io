@@ -6,7 +6,7 @@ const root = process.cwd();
 const tmpDir = path.join(root, '.tmp');
 if (!existsSync(tmpDir)) mkdirSync(tmpDir);
 
-const PAGES = ['index.html', 'servizi.html', 'chi-sono.html', 'progetti.html', 'contatti.html'];
+const PAGES = ['index.html', 'chi-sono.html', 'progetti.html', 'contatti.html'];
 
 const FONTS = [
   { family: 'Inter', weight: 400, pkg: 'inter', file: 'inter-latin-400-normal.woff2' },
