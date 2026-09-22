@@ -18,16 +18,6 @@
     });
   }
 
-  function initActiveNav() {
-    var path = location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('[data-nav-link]').forEach(function (a) {
-      var href = a.getAttribute('href');
-      if (href === path || (path === '' && href === 'index.html')) {
-        a.classList.add('is-active');
-      }
-    });
-  }
-
   function initReveal() {
     var els = document.querySelectorAll('.reveal, .reveal-scale');
     if (!els.length) return;
@@ -51,18 +41,21 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  function formatCount(el, value) {
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    return prefix + String(Math.round(value)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + suffix;
+  }
+
   function animateCount(el) {
     var target = parseFloat(el.getAttribute('data-count'));
-    var suffix = el.getAttribute('data-suffix') || '';
-    var decimals = el.getAttribute('data-decimals') ? parseInt(el.getAttribute('data-decimals'), 10) : 0;
     var duration = 1600;
     var start = null;
     function step(ts) {
       if (start === null) start = ts;
       var progress = Math.min((ts - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3);
-      var value = target * eased;
-      el.textContent = value.toFixed(decimals) + suffix;
+      el.textContent = formatCount(el, target * eased);
       if (progress < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -73,9 +66,7 @@
     if (!els.length) return;
     if (reduceMotion || !('IntersectionObserver' in window)) {
       els.forEach(function (el) {
-        var target = parseFloat(el.getAttribute('data-count'));
-        var suffix = el.getAttribute('data-suffix') || '';
-        el.textContent = target + suffix;
+        el.textContent = formatCount(el, parseFloat(el.getAttribute('data-count')));
       });
       return;
     }
@@ -95,8 +86,7 @@
 
   function initSpotlight() {
     if (reduceMotion) return;
-    var cards = document.querySelectorAll('.card-spotlight');
-    cards.forEach(function (card) {
+    document.querySelectorAll('.card-spotlight').forEach(function (card) {
       card.addEventListener('pointermove', function (e) {
         var rect = card.getBoundingClientRect();
         card.style.setProperty('--x', (e.clientX - rect.left) + 'px');
@@ -107,8 +97,7 @@
 
   function initTilt() {
     if (reduceMotion) return;
-    var cards = document.querySelectorAll('.tilt');
-    cards.forEach(function (card) {
+    document.querySelectorAll('.tilt').forEach(function (card) {
       card.addEventListener('pointermove', function (e) {
         var rect = card.getBoundingClientRect();
         var px = (e.clientX - rect.left) / rect.width - 0.5;
@@ -120,22 +109,6 @@
         card.style.setProperty('--rx', '0deg');
         card.style.setProperty('--ry', '0deg');
       });
-    });
-  }
-
-  function initCarousels() {
-    document.querySelectorAll('[data-carousel]').forEach(function (root) {
-      var track = root.querySelector('[data-track]');
-      var prev = root.querySelector('[data-prev]');
-      var next = root.querySelector('[data-next]');
-      if (!track) return;
-      function scrollByCard(dir) {
-        var card = track.querySelector('[data-slide]');
-        var amount = card ? card.getBoundingClientRect().width + 24 : track.clientWidth * 0.8;
-        track.scrollBy({ left: dir * amount, behavior: reduceMotion ? 'auto' : 'smooth' });
-      }
-      if (prev) prev.addEventListener('click', function () { scrollByCard(-1); });
-      if (next) next.addEventListener('click', function () { scrollByCard(1); });
     });
   }
 
@@ -158,12 +131,10 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     initMenu();
-    initActiveNav();
     initReveal();
     initCounters();
     initSpotlight();
     initTilt();
-    initCarousels();
     initYear();
     initHeaderShadow();
   });
